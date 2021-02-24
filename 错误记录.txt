@@ -1,0 +1,25 @@
+训练命令：StyleGAN_editor.ipynb,比如
+python facial_exchange.py --src_im1 source_image/sample.png --src_im2 source_image/0.png --iteration 200
+
+
+1.运行python weight_convert.py报错：
+__module__ = 'tensorflow.core.framework.resource_handle_pb2'
+TypeError: expected bytes, Descriptor found
+
+终端安装：
+pip install protobuf-py3
+pip install --upgrade protobuf
+
+2.cuda报错, RuntimeError: CUDA error: unknown error
+
+  File "D:\ProgramFiles\ProgramFiles\anaconda\lib\site-packages\torch\nn\modules\module.py", line 384, in convert
+    return t.to(device, dtype if t.is_floating_point() else None, non_blocking)
+  File "D:\ProgramFiles\ProgramFiles\anaconda\lib\site-packages\torch\cuda\__init__.py", line 163, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: CUDA error: unknown error
+
+在import后边加上下边一句：torch.cuda.current_device()
+
+import torch
+torch.cuda.current_device()
+import torchvision
